@@ -13,6 +13,21 @@ public class GildedRose {
     }
 
     private void updateItemQuality(Item item) {
+
+        switch (item.name){
+            case "Aged Brie":
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
+                }
+                item.sellIn = item.sellIn - 1;
+                if (item.sellIn < 0) {
+                    if (item.quality < 50) {
+                        item.quality = item.quality + 1;
+                    }
+                }
+                return;
+
+        }
         if (!item.name.equals("Aged Brie")
                 && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (item.quality > 0) {
