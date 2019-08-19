@@ -13,8 +13,8 @@ public class GildedRose {
     }
 
     private void updateItemQuality(Item item) {
-        if (!item.name.equals("Aged Brie")
-                && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+        if (!isAged_brie(item)
+                && !isBackstage(item)) {
             if (item.quality > 0) {
                 reduceQualityNoSulfuras(item);
             }
@@ -22,7 +22,7 @@ public class GildedRose {
             if (item.quality < 50) {
                 item.quality = item.quality + 1;
 
-                if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (isBackstage(item)) {
                     if (item.sellIn < 11) {
                         if (item.quality < 50) {
                             item.quality = item.quality + 1;
@@ -38,13 +38,13 @@ public class GildedRose {
             }
         }
 
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+        if (!isSulfuras(item)) {
             item.sellIn = item.sellIn - 1;
         }
 
         if (item.sellIn < 0) {
-            if (!item.name.equals("Aged Brie")) {
-                if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            if (!isAged_brie(item)) {
+                if (!isBackstage(item)) {
                     if (item.quality > 0) {
                         reduceQualityNoSulfuras(item);
                     }
@@ -59,9 +59,21 @@ public class GildedRose {
         }
     }
 
+    private boolean isBackstage(Item item) {
+        return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
+    }
+
+    private boolean isAged_brie(Item item) {
+        return item.name.equals("Aged Brie");
+    }
+
     private void reduceQualityNoSulfuras(Item item) {
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+        if (!isSulfuras(item)) {
             item.quality = item.quality - 1;
         }
+    }
+
+    private boolean isSulfuras(Item item) {
+        return item.name.equals("Sulfuras, Hand of Ragnaros");
     }
 }
