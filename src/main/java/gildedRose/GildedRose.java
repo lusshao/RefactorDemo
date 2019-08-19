@@ -20,7 +20,7 @@ public class GildedRose {
                 if (item.quality < 50) {
                     item.setQuality(item.getQuality() + 1);
                 }
-                item.sellIn = item.sellIn - 1;
+                item.setSellIn(item.getSellIn()-1);
                 if (item.sellIn < 0) {
                     if (item.quality < 50) {
                         item.setQuality(item.getQuality() + 1);
@@ -42,7 +42,7 @@ public class GildedRose {
                         }
                     }
                 }
-                item.sellIn = item.sellIn - 1;
+                item.setSellIn(item.getSellIn()-1);
                 if (item.sellIn < 0) {
                     item.setQuality(0);
                 }
@@ -54,7 +54,7 @@ public class GildedRose {
                 if (item.quality > 0) {
                     item.setQuality(item.getQuality() - 1);
                 }
-                item.sellIn = item.sellIn - 1;
+                item.setSellIn(item.getSellIn()-1);
                 if (item.sellIn < 0) {
                     if (item.quality > 0) {
                         item.setQuality(item.getQuality() - 1);
@@ -63,4 +63,5 @@ public class GildedRose {
                 return;
         }
     }
+
 }
