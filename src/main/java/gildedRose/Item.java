@@ -48,4 +48,20 @@ public class Item {
             setQuality(getQuality() + 1);
         }
     }
+
+    public void updateBackstage() {
+        if (getQuality() < 50) {
+            setQuality(getQuality() + 1);
+            if (getSellIn() < 11 && getQuality() < 50) {
+                setQuality(getQuality() + 1);
+            }
+            if (getSellIn() < 6 && getQuality() < 50) {
+                setQuality(getQuality() + 1);
+            }
+        }
+        setSellIn(getSellIn()-1);
+        if (getSellIn() < 0) {
+            setQuality(0);
+        }
+    }
 }
