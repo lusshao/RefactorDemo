@@ -14,20 +14,6 @@ public class GildedRose {
     }
 
     private void updateItemQuality(Item item) {
-
-        switch (item.getName()) {
-            case "Aged Brie":
-                item.updateAged();
-                return;
-            case "Backstage passes to a TAFKAL80ETC concert":
-                item.updateBackstage();
-                return;
-
-            case "Sulfuras, Hand of Ragnaros":
-                return;
-            default:
-                item.updateNormal();
-                return;
-        }
+        item.update();
     }
 }

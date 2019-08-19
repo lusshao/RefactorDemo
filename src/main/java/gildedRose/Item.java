@@ -1,6 +1,6 @@
 package gildedRose;
 
-public class Item {
+public abstract class Item {
 
     private String name;
 
@@ -39,39 +39,6 @@ public class Item {
         this.quality = quality;
     }
 
-    public void updateAged(){
-        if (getQuality() < 50) {
-            setQuality(getQuality() + 1);
-        }
-        setSellIn(getSellIn()-1);
-        if (getSellIn() < 0 && getQuality() < 50) {
-            setQuality(getQuality() + 1);
-        }
-    }
+    public abstract void update();
 
-    public void updateBackstage() {
-        if (getQuality() < 50) {
-            setQuality(getQuality() + 1);
-            if (getSellIn() < 11 && getQuality() < 50) {
-                setQuality(getQuality() + 1);
-            }
-            if (getSellIn() < 6 && getQuality() < 50) {
-                setQuality(getQuality() + 1);
-            }
-        }
-        setSellIn(getSellIn()-1);
-        if (getSellIn() < 0) {
-            setQuality(0);
-        }
-    }
-
-    public void updateNormal() {
-        if (getQuality() > 0) {
-            setQuality(getQuality() - 1);
-        }
-        setSellIn(getSellIn()-1);
-        if (getSellIn() < 0 && getQuality() > 0) {
-            setQuality(getQuality() - 1);
-        }
-    }
 }
