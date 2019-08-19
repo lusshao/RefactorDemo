@@ -64,4 +64,14 @@ public class Item {
             setQuality(0);
         }
     }
+
+    public void updateNormal() {
+        if (getQuality() > 0) {
+            setQuality(getQuality() - 1);
+        }
+        setSellIn(getSellIn()-1);
+        if (getSellIn() < 0 && getQuality() > 0) {
+            setQuality(getQuality() - 1);
+        }
+    }
 }
