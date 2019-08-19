@@ -17,13 +17,7 @@ public class GildedRose {
 
         switch (item.getName()) {
             case "Aged Brie":
-                if (item.getQuality() < 50) {
-                    item.setQuality(item.getQuality() + 1);
-                }
-                item.setSellIn(item.getSellIn()-1);
-                if (item.getSellIn() < 0 && item.getQuality() < 50) {
-                        item.setQuality(item.getQuality() + 1);
-                }
+                item.updateAged();
                 return;
             case "Backstage passes to a TAFKAL80ETC concert":
                 if (item.getQuality() < 50) {

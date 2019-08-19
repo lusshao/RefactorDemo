@@ -23,10 +23,6 @@ public class Item {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getSellIn() {
         return sellIn;
     }
@@ -41,5 +37,15 @@ public class Item {
 
     public void setQuality(int quality) {
         this.quality = quality;
+    }
+
+    public void updateAged(){
+        if (getQuality() < 50) {
+            setQuality(getQuality() + 1);
+        }
+        setSellIn(getSellIn()-1);
+        if (getSellIn() < 0 && getQuality() < 50) {
+            setQuality(getQuality() + 1);
+        }
     }
 }
