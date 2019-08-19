@@ -15,28 +15,28 @@ public class GildedRose {
 
     private void updateItemQuality(Item item) {
 
-        switch (item.name) {
+        switch (item.getName()) {
             case "Aged Brie":
-                if (item.quality < 50) {
+                if (item.getQuality() < 50) {
                     item.setQuality(item.getQuality() + 1);
                 }
                 item.setSellIn(item.getSellIn()-1);
-                if (item.sellIn < 0 && item.quality < 50) {
+                if (item.getSellIn() < 0 && item.getQuality() < 50) {
                         item.setQuality(item.getQuality() + 1);
                 }
                 return;
             case "Backstage passes to a TAFKAL80ETC concert":
-                if (item.quality < 50) {
+                if (item.getQuality() < 50) {
                     item.setQuality(item.getQuality() + 1);
-                    if (item.sellIn < 11 && item.quality < 50) {
+                    if (item.getSellIn() < 11 && item.getQuality() < 50) {
                             item.setQuality(item.getQuality() + 1);
                     }
-                    if (item.sellIn < 6 && item.quality < 50) {
+                    if (item.getSellIn() < 6 && item.getQuality() < 50) {
                             item.setQuality(item.getQuality() + 1);
                     }
                 }
                 item.setSellIn(item.getSellIn()-1);
-                if (item.sellIn < 0) {
+                if (item.getSellIn() < 0) {
                     item.setQuality(0);
                 }
                 return;
@@ -44,11 +44,11 @@ public class GildedRose {
             case "Sulfuras, Hand of Ragnaros":
                 return;
             default:
-                if (item.quality > 0) {
+                if (item.getQuality() > 0) {
                     item.setQuality(item.getQuality() - 1);
                 }
                 item.setSellIn(item.getSellIn()-1);
-                if (item.sellIn < 0 && item.quality > 0) {
+                if (item.getSellIn() < 0 && item.getQuality() > 0) {
                         item.setQuality(item.getQuality() - 1);
                 }
                 return;
