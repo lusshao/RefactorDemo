@@ -13,16 +13,18 @@ public class GildedRose {
     }
 
     private void updateItemQuality(Item item) {
-        if (!isAged_brie(item)
-                && !isBackstage(item)) {
+        if (!item.name.equals("Aged Brie")
+                && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (item.quality > 0) {
-                reduceQualityNoSulfuras(item);
+                if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                    item.quality = item.quality - 1;
+                }
             }
         } else {
             if (item.quality < 50) {
                 item.quality = item.quality + 1;
 
-                if (isBackstage(item)) {
+                if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                     if (item.sellIn < 11) {
                         if (item.quality < 50) {
                             item.quality = item.quality + 1;
@@ -38,18 +40,20 @@ public class GildedRose {
             }
         }
 
-        if (!isSulfuras(item)) {
+        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
             item.sellIn = item.sellIn - 1;
         }
 
         if (item.sellIn < 0) {
-            if (!isAged_brie(item)) {
-                if (!isBackstage(item)) {
+            if (!item.name.equals("Aged Brie")) {
+                if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                     if (item.quality > 0) {
-                        reduceQualityNoSulfuras(item);
+                        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                            item.quality = item.quality - 1;
+                        }
                     }
                 } else {
-                    item.quality = 0;
+                    item.quality = item.quality - item.quality;
                 }
             } else {
                 if (item.quality < 50) {
@@ -57,23 +61,5 @@ public class GildedRose {
                 }
             }
         }
-    }
-
-    private boolean isBackstage(Item item) {
-        return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
-    }
-
-    private boolean isAged_brie(Item item) {
-        return item.name.equals("Aged Brie");
-    }
-
-    private void reduceQualityNoSulfuras(Item item) {
-        if (!isSulfuras(item)) {
-            item.quality = item.quality - 1;
-        }
-    }
-
-    private boolean isSulfuras(Item item) {
-        return item.name.equals("Sulfuras, Hand of Ragnaros");
     }
 }
